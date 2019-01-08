@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 定义任务bean -->
+	<bean name="dataBackJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- 指定具体的job类 -->
+		<property name="jobClass" value="cn.zrar.hzjk.job.DataBackJob" />
+		<!-- 指定job的名称 -->
+		<property name="name" value="job1" />
+		<!-- 指定job的分组 -->
+		<property name="group" value="group1" />
+		<!-- 必须设置为true，如果为false，当没有活动的触发器与之关联时会在调度器中删除该任务  -->
+		<property name="durability" value="true"/>
+		<!-- 指定spring容器的key，如果不设定在job中的jobmap中是获取不到spring容器的 -->
+		<property name="applicationContextJobDataKey" value="applicationContext"/>
+	</bean>
+
+	<!-- 定义任务bean -->
+	<bean name="dataUploadJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- 指定具体的job类 -->
+		<property name="jobClass" value="cn.zrar.hzjk.job.DataUploadJob" />
+		<!-- 指定job的名称 -->
+		<property name="name" value="job2" />
+		<!-- 指定job的分组 -->
+		<property name="group" value="group1" />
+		<!-- 必须设置为true，如果为false，当没有活动的触发器与之关联时会在调度器中删除该任务  -->
+		<property name="durability" value="true"/>
+		<!-- 指定spring容器的key，如果不设定在job中的jobmap中是获取不到spring容器的 -->
+		<property name="applicationContextJobDataKey" value="applicationContext"/>
+	</bean>
+
+
+
+
+
+	<!-- 定义触发器 -->
+	<bean id="cronTrigger1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="dataBackJob" />
+		<!-- 每*分钟执行一次 -->
+		<property name="cronExpression" value="0 0/1 * * * ? " />
+	</bean>
+	<bean id="cronTrigger2" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="dataUploadJob" />
+		<!-- 每*分钟执行一次 -->
+		<property name="cronExpression" value="0 0/1 * * * ? " />
+	</bean>
+
+
+
+	<!-- 定义调度器 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	    <property name="triggers">
+	        <list>
+	            <!--<ref bean="cronTrigger1" />-->
+				<ref bean="cronTrigger2" />
+	        </list>
+	    </property>
+		<property name="configLocation" value="classpath:quartz.properties"/>
+		<property name="quartzProperties">
+			<props>
+				<!-- 项目启动时候，跳过quartz的版本修改检测 -->
+				<!--若是没有该设置，在启动的时候，quartz会自动访问默认的网址去检测quartz的版本，若访问不到，则会出现如下提示-->
+				<!--Quartz version update check failed: Server returned HTTP response code: 403 for URL: http://www.terracotta.org/kit/reflector-->
+				<prop key="org.quartz.scheduler.skipUpdateCheck">true</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

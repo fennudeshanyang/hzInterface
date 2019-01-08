@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zrar.hzjk.mapper.ObtainDataMapper">
+
+<!--    <resultMap id="scsjXfjRM2" type="cn.zrar.hzjk.pojo.InterfaceLddj" autoMapping="true">
+        <id column="lddj_storeid" property="storeid"></id>
+        <result column="lddj_xzqh" property="xzqh"></result>
+        <result column="lddj_xfjbh" property="xfjbh"></result>
+        <result column="lddj_xfxs" property="xfxs"></result>
+        <result column="lddj_gh" property="gh"></result>
+        <result column="lddj_djr" property="djr"></result>
+
+        <association property="xfj" javaType="cn.zrar.hzjk.pojo.InterfaceXfj">
+            <id column="xfj_xfjid" property="xfjid"></id>
+            <result column="xfj_xzqh" property="xzqh"></result>
+            <result column="xfj_xfjbh" property="xfjbh"></result>
+            <result column="xfj_xfrq" property="xfrq"></result>
+            <result column="xfj_xfxs" property="xfxs"></result>
+        </association>
+        <association property="xfr" javaType="cn.zrar.hzjk.pojo.InterfaceXfr">
+            <id column="xfr_xfrid" property="xfrid"></id>
+            <result column="xfr_xzqh" property="xzqh"></result>
+            <result column="xfr_xfjid" property="xfjid"></result>
+        </association>
+
+        <collection property="blfss" ofType="cn.zrar.hzjk.pojo.InterfaceBlfs">
+            <id column="blfs_blfsid" property="blfsid"></id>
+            <result column="blfs_xzqh" property="xzqh"></result>
+            <result column="blfs_xfjid" property="xfjid"></result>
+        </collection>
+    </resultMap>-->
+    <!-- ===================================业务库上传数据给中间库的整个过程中用到的=================================== -->
+    <resultMap id="uploadDataRM" type="cn.zrar.hzjk.pojo.InterfaceLddj" autoMapping="true">
+        <id column="lddj_storeid" property="storeid"></id>
+        <result column="lddj_xzqh" property="xzqh"></result>
+        <result column="lddj_xfjbh" property="xfjbh"></result>
+        <result column="lddj_xfxs" property="xfxs"></result>
+        <result column="lddj_gh" property="gh"></result>
+        <result column="lddj_djr" property="djr"></result>
+        <result column="lddj_djsj" property="djsj"></result>
+        <result column="lddj_xm" property="xm"></result>
+        <result column="lddj_wtsd" property="wtsd"></result>
+        <result column="lddj_ldhm" property="ldhm"></result>
+        <result column="lddj_lxdh" property="lxdh"></result>
+        <result column="lddj_xb" property="xb"></result>
+        <result column="lddj_czdz" property="czdz"></result>
+        <result column="lddj_xfmd" property="xfmd"></result>
+        <result column="lddj_nrfl" property="nrfl"></result>
+        <result column="lddj_yxj" property="yxj"></result>
+        <result column="lddj_xbsj" property="xbsj"></result>
+        <result column="lddj_qgccxfbz" property="qgccxfbz"></result>
+        <result column="lddj_sfxfj" property="sfxfj"></result>
+        <result column="lddj_sfgk" property="sfgk"></result>
+        <result column="lddj_sfgldhly" property="sfgldhly"></result>
+        <result column="lddj_xgfj" property="xgfj"></result>
+        <result column="lddj_fynr" property="fynr"></result>
+        <result column="lddj_clqk" property="clqk"></result>
+        <result column="lddj_zjlx" property="zjlx"></result>
+        <result column="lddj_zjhm" property="zjhm"></result>
+        <result column="lddj_bt" property="bt"></result>
+        <result column="lddj_ldzt" property="ldzt"></result>
+        <result column="lddj_cxm" property="cxm"></result>
+        <result column="lddj_xfjbh_new" property="xfjbhNew"></result>
+        <result column="lddj_lhxfjid" property="lhxfjid"></result>
+        <result column="lddj_bhjhm" property="bhjhm"></result>
+        <result column="lddj_issecret" property="issecret"></result>
+        <result column="lddj_sxfjbh" property="sxfjbh"></result>
+
+        <association property="xfj" javaType="cn.zrar.hzjk.pojo.InterfaceXfj">
+            <id column="xfj_xfjid" property="xfjid"></id>
+            <result column="xfj_xzqh" property="xzqh"></result>
+            <result column="xfj_xfjbh" property="xfjbh"></result>
+            <result column="xfj_cxmzt" property="cxmzt"></result>
+            <result column="xfj_cxm" property="cxm"></result>
+            <result column="xfj_xfrq" property="xfrq"></result>
+            <result column="xfj_xfxs" property="xfxs"></result>
+            <result column="xfj_xfrs" property="xfrs"></result>
+            <result column="xfj_sjrs" property="sjrs"></result>
+            <result column="xfj_djjgmc" property="djjgmc"></result>
+            <result column="xfj_djjgdm" property="djjgdm"></result>
+            <result column="xfj_djbm" property="djbm"></result>
+            <result column="xfj_djr" property="djr"></result>
+            <result column="xfj_djsj" property="djsj"></result>
+            <result column="xfj_gkxx" property="gkxx"></result>
+            <result column="xfj_tsnr" property="tsnr"></result>
+            <result column="xfj_sxr" property="sxr"></result>
+            <result column="xfj_xfjzt" property="xfjzt"></result>
+            <result column="xfj_bjgccbz" property="bjgccbz"></result>
+            <result column="xfj_qgccbz" property="qgccbz"></result>
+            <result column="xfj_cfxfbz" property="cfxfbz"></result>
+            <result column="xfj_wtsddm" property="wtsddm"></result>
+            <result column="xfj_nrfldm" property="nrfldm"></result>
+            <result column="xfj_xfmddm" property="xfmddm"></result>
+            <result column="xfj_xfyydm" property="xfyydm"></result>
+            <result column="xfj_scxfjg" property="scxfjg"></result>
+            <result column="xfj_scxfrq" property="scxfrq"></result>
+            <result column="xfj_sksflbz" property="sksflbz"></result>
+            <result column="xfj_jabz" property="jabz"></result>
+            <result column="xfj_fcbz" property="fcbz"></result>
+            <result column="xfj_fhbz" property="fhbz"></result>
+            <result column="xfj_bjbz" property="bjbz"></result>
+            <result column="xfj_shrdbjbz" property="shrdbjbz"></result>
+            <result column="xfj_lmbz" property="lmbz"></result>
+            <result column="xfj_gkbz" property="gkbz"></result>
+            <result column="xfj_zdjjbz" property="zdjjbz"></result>
+            <result column="xfj_nmbz" property="nmbz"></result>
+            <result column="xfj_yybz" property="yybz"></result>
+            <result column="xfj_rdwt" property="rdwt"></result>
+            <result column="xfj_ssxt" property="ssxt"></result>
+            <result column="lddj_xbjzsj" property="xbjzsj"></result>
+            <result column="xfj_xgfj" property="xgfj"></result>
+            <result column="xfj_bfyrjb" property="bfyrjb"></result>
+            <result column="xfj_bfyrzw" property="bfyrzw"></result>
+            <result column="xfj_bfyrzzdm" property="bfyrzzdm"></result>
+            <result column="xfj_bfyrzzmc" property="bfyrzzmc"></result>
+            <result column="xfj_bfyrhdw" property="bfyrhdw"></result>
+            <result column="xfj_blcx" property="blcx"></result>
+            <result column="xfj_xfjbh_new" property="xfjbhNew"></result>
+            <result column="xfj_lhxfjid" property="lhxfjid"></result>
+            <result column="xfj_djrid" property="djrid"></result>
+        </association>
+
+        <association property="xfr" javaType="cn.zrar.hzjk.pojo.InterfaceXfr">
+            <id column="xfr_xfrid" property="xfrid"></id>
+            <result column="xfr_xzqh" property="xzqh"></result>
+            <result column="xfr_xfjid" property="xfjid"></result>
+            <result column="xfr_xm" property="xm"></result>
+            <result column="xfr_xb" property="xb"></result>
+            <result column="xfr_mz" property="mz"></result>
+            <result column="xfr_zz" property="zz"></result>
+            <result column="xfr_zzdm" property="zzdm"></result>
+            <result column="xfr_zjlx" property="zjlx"></result>
+            <result column="xfr_zjhm" property="zjhm"></result>
+            <result column="xfr_sjh" property="sjh"></result>
+            <result column="xfr_hkszd" property="hkszd"></result>
+            <result column="xfr_txdz" property="txdz"></result>
+            <result column="xfr_gzdw" property="gzdw"></result>
+            <result column="xfr_yzbm" property="yzbm"></result>
+            <result column="xfr_gddh" property="gddh"></result>
+            <result column="xfr_dzyj" property="dzyj"></result>
+            <result column="xfr_csrq" property="csrq"></result>
+            <result column="xfr_zy" property="zy"></result>
+            <result column="xfr_xfjzfrbz" property="xfjzfrbz"></result>
+            <result column="xfr_lhxfjid" property="lhxfjid"></result>
+        </association>
+
+<!--        <association property="blfs" javaType="cn.zrar.hzjk.pojo.InterfaceBlfs">
+            <id column="blfs_blfsid" property="blfsid"></id>
+            <result column="blfs_xzqh" property="xzqh"></result>
+            <result column="blfs_xfjid" property="xfjid"></result>
+            <result column="blfs_blfs" property="xfjid"></result>
+            <result column="blfs_bljg" property="xfjid"></result>
+            <result column="blfs_bljgdm" property="xfjid"></result>
+            <result column="blfs_blbm" property="xfjid"></result>
+            <result column="blfs_jbr" property="xfjid"></result>
+            <result column="blfs_blsj" property="xfjid"></result>
+            <result column="blfs_qxjg" property="xfjid"></result>
+            <result column="blfs_qxjgdm" property="xfjid"></result>
+            <result column="blfs_xqxmc" property="xfjid"></result>
+            <result column="blfs_hfgznr" property="xfjid"></result>
+            <result column="blfs_fj" property="xfjid"></result>
+            <result column="blfs_lhxfjid" property="xfjid"></result>
+            <result column="blfs_sfyth" property="xfjid"></result>
+            <result column="blfs_issd" property="xfjid"></result>
+            <result column="blfs_dftype" property="xfjid"></result>
+            <result column="blfs_xqhbsj" property="xfjid"></result>
+        </association>-->
+
+        <collection property="blfss" ofType="cn.zrar.hzjk.pojo.InterfaceBlfs">
+            <id column="blfs_blfsid" property="blfsid"></id>
+            <result column="blfs_xzqh" property="xzqh"></result>
+            <result column="blfs_xfjid" property="xfjid"></result>
+            <result column="blfs_blfs" property="blfs"></result>
+            <result column="blfs_bljg" property="bljg"></result>
+            <result column="blfs_bljgdm" property="bljgdm"></result>
+            <result column="blfs_blbm" property="blbm"></result>
+            <result column="blfs_jbr" property="jbr"></result>
+            <result column="blfs_blsj" property="blsj"></result>
+            <result column="blfs_qxjg" property="qxjg"></result>
+            <result column="blfs_qxjgdm" property="qxjgdm"></result>
+            <result column="blfs_xqxmc" property="xqxmc"></result>
+            <result column="blfs_hfgznr" property="hfgznr"></result>
+            <result column="blfs_fj" property="fj"></result>
+            <result column="blfs_lhxfjid" property="lhxfjid"></result>
+            <result column="blfs_sfyth" property="sfyth"></result>
+            <result column="blfs_issd" property="issd"></result>
+            <result column="blfs_dftype" property="dftype"></result>
+            <result column="blfs_xqhbsj" property="xqhbsj"></result>
+            <result column="blfs_jbrid" property="jbrid"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findUploadData" resultMap="uploadDataRM">
+        select
+        <!-- lddj  34个字段 -->
+        a.xfjid as lddj_storeid,                  <!-- 1.新的uuid lddj表的主键-->
+        '330100' as lddj_xzqh,
+        a.sxfjbh as lddj_xfjbh,
+        '0400' as lddj_xfxs,
+        a.djr as lddj_gh,
+        a.djrxm as lddj_djr,
+        to_char(a.xfrq,'yyyy-mm-dd hh24:mi:ss') as lddj_djsj,
+        a.xm as lddj_xm,
+        '330100000000' as lddj_wtsd,
+        ltrim(trim(a.ldhm),'0') as lddj_ldhm,
+        ltrim(trim(a.lxdh),'0') as lddj_lxdh,
+        case a.xb when '0' then '1' else '0' end as lddj_xb,
+        null as lddj_czdz,
+        case to_char(a.md) when '50000' then '01' when '50001' then '02' when '50002' then '99' when '5003' then '04' when '50004' then '98' else '99' end as lddj_xfmd,
+        a.nrfl as lddj_nrfl,                       <!-- 中间库:关联表切换 -->
+        null as lddj_yxj,
+        null as lddj_xbsj,
+        null as lddj_qgccxfbz,
+        '1' as lddj_sfxfj,
+        case a.sfbm when '0' then '1' else '0' end as lddj_sfgk,
+        null as lddj_sfgldhly,
+        a.lywj as lddj_xgfj,
+        a.fynr as lddj_fynr,
+        null as lddj_clqk,
+        null as lddj_zjlx,
+        null as lddj_zjhm,
+        null as lddj_bt,
+        '0' as lddj_ldzt,
+        null as lddj_cxm,
+        null as lddj_xfjbh_new,
+        'HZ330100' || a.xfjid as lddj_lhxfjid,
+        (select calledno from tx_call_logo where callid=a.callid) as lddj_bhjhm,
+        '1' as lddj_issecret,
+        a.sxfjbh as lddj_sxfjbh,
+
+        <!-- xfj 51个字段 -->
+        a.xfjid as xfj_xfjid,                                     <!-- 2.新的uuid xfj表的主键-->
+        '330100' as xfj_xzqh,
+        a.sxfjbh as xfj_xfjbh,
+        '1' as xfj_cxmzt,                                         <!-- 已解决？？？？？？ -->
+        null as xfj_cxm,
+        to_char(a.djrq,'yyyy-mm-dd hh24:mi:ss') as xfj_xfrq,
+        '0400' as xfj_xfxs,
+        '1' as xfj_xfrs,
+        '1' as xfj_sjrs,
+        '杭州市信访局' as xfj_djjgmc,
+        '33010000000' as xfj_djjgdm,
+        '03455000000000000' as xfj_djbm,
+        null as xfj_djr,
+        to_char(a.djrq,'yyyy-mm-dd hh24:mi:ss') as xfj_djsj,
+        a.fynr as xfj_gkxx,
+        a.fynr as xfj_tsnr,
+        null as xfj_sxr,
+        '01' as xfj_xfjzt,
+        '1' as xfj_bjgccbz,
+        '1' as xfj_qgccbz,
+        '0' as xfj_cfxfbz,
+        '330100000000' as xfj_wtsddm,
+        a.nrfl as xfj_nrfldm,                                       <!-- 中间库:关联表切换 -->
+        case a.md when 5000 then '01' when 5001 then '02' when 5002 then '99' when 5003 then '04' when 5004 then '98'  else '99' end as xfj_xfmddm,
+        '99' as xfj_xfyydm,                                         <!-- 已解决？？？？？？ -->
+        '杭州市信访局' as xfj_scxfjg,
+        to_char(a.djrq,'yyyy-mm-dd hh24:mi:ss') as xfj_scxfrq,
+        '0' as xfj_sksflbz,
+        '0' as xfj_jabz,
+        '0' as xfj_fcbz,
+        '0' as xfj_fhbz,
+        case a.dffs when '0' then '1' when '1' then '0' end as xfj_bjbz,
+        '0' as xfj_shrdbjbz,
+        '0' as xfj_lmbz,
+        case a.sfbm when '0' then '1' when '1' then '0' end as xfj_gkbz,
+        '0' as xfj_zdjjbz,
+        '0' as xfj_nmbz,
+        '0' as xfj_yybz,
+        null as xfj_rdwt,
+        '46' as xfj_ssxt,
+        to_char(a.djrq+10,'yyyy-mm-dd hh24:mi:ss') as lddj_xbjzsj,
+        null as xfj_xgfj,
+        null as xfj_bfyrjb,
+        null as xfj_bfyrzw,
+        null as xfj_bfyrzzdm,
+        null as xfj_bfyrzzmc,
+        null as xfj_bfyrhdw,
+        '1' as xfj_blcx,
+        null as xfj_xfjbh_new,
+        'HZ330100' || a.xfjid as xfj_lhxfjid,
+        'bb4aa23667d0024e0167eeaa0a1d1287' as xfj_djrid,
+
+        <!-- xfr 21个字段 -->
+        a.xfjid as xfr_xfrid,                                       <!-- 3.新的uuid  xfr表的主键-->
+        '330100' as xfr_xzqh,
+        null as xfr_xfjid,                                          <!-- xfj表的主键 -->
+        a.xm as xfr_xm,
+        case a.xb when '0' then '1' else '0' end as xfr_xb,
+        null as xfr_mz,
+        a.xxdz as xfr_zz,
+        '330100000000' as xfr_zzdm,                                           <!-- 已解决？？？？？？ -->
+        null as xfr_zjlx,
+        null as xfr_zjhm,
+        ltrim(trim(a.lxdh),'0') as xfr_sjh,
+        null as xfr_hkszd,
+        null as xfr_txdz,
+        null as xfr_gzdw,
+        null as xfr_yzbm,
+        null as xfr_gddh,
+        null as xfr_dzyj,
+        null as xfr_csrq,
+        null as xfr_zy,
+        '1' as xfr_xfjzfrbz,
+        'HZ330100' || a.xfjid as xfr_lhxfjid,
+
+        <!-- blfs 20个字段 -->
+        b.ywblid as blfs_blfsid,                                    <!-- 4.新的uuid  blfs表的主键-->
+        '330100' as blfs_xzqh,
+        null as blfs_xfjid,                                         <!-- xfj表的主键 -->
+        '020000' as blfs_blfs,
+        b.jsbmmc as blfs_bljg,
+        (select sjjgid from t_xt_jg where jg_id=b.jsbm) as blfs_bljgdm,
+        b.jsbmmc as blfs_blbm,
+        null as blfs_jbr,
+        to_char(a.djrq,'yyyy-mm-dd hh24:mi:ss') as blfs_blsj,
+        null as blfs_qxjg,
+        null as blfs_qxjgdm,
+        null as blfs_xqxmc,
+        '无' as blfs_hfgznr,
+        null as blfs_fj,
+        'HZ330100' || a.xfjid as blfs_lhxfjid,
+        null as blfs_sfyth,
+        null as blfs_issd,
+        null as blfs_dftype,
+        null as blfs_xqhbsj,
+        'bb4aa23667d0024e0167eeaa0a1d1287' as blfs_jbrid
+
+        from (
+            select t.* from xf_ywdj t where t.dffs='1' and t.sjjhzt &gt;=  '0' and t.sjjhzt &lt; '5' and t.scbz='0' and
+            t.zwwxdh='0' and t.sxfjbh is not null  and  rownum &lt; = 100
+        ) a,
+        (select * from xf_ywbl  where fsfs='1' and zt!='A' and zt!='3' and zt!='9' ) b,
+        xf_bjxx c
+        where a.xfjid=b.xfjid(+) and a.xfjid=c.xfjid(+)
+
+    </select>
+    <update id="updateUploadDataSjjhzt">
+        update xf_ywdj set sjjhzt=
+        <if test="sjjhzt!=null"> #{sjjhzt} </if>
+        <if test="sjjhzt==null"> sjjhzt ${symbol} 1 </if>
+        <if test="sjjhzt==40">, sjjhsbyy= #{sjjhsbyy}</if>
+        where sxfjbh=#{sxfjbh}
+    </update>
+    <select id="upLoadDataExistCount" resultType="java.lang.Integer" >
+        select count(1) as total from interface_lddj where sxfjbh = #{sxfjbh}
+    </select>
+    <select id="findFlidByNrfl" resultType="java.lang.String">
+        select g.outer_flid from GY_NRFL_YS g where g.flid = #{nrfl} and g.fl = '0'
+    </select>
+
+
+    <!-- ===================================中间库回传数据给业务库的整个过程中用到的=================================== -->
+
+    <select id="findBackData" resultType="cn.zrar.hzjk.pojo.SjBlResult">
+        select * from SJ_BLRESULT where djsj &gt; sysdate-90 and sjss=#{sjss} and  sjjhzt &lt; 5 and sjjhzt &gt;= 0  and rownum &lt;= 200
+    </select>
+
+    <update id="updateBackDataSjjhzt">
+        update SJ_BLRESULT set sjjhzt=
+        <if test="sjjhzt!=null"> #{sjjhzt} </if>
+        <if test="sjjhzt==null"> sjjhzt ${symbol} 1 </if>
+         where id=#{id}
+    </update>
+    <select id="backDataExistCount" resultType="java.lang.Integer">
+        select count(1) as total from XF_SJ_BLRESULT where id = #{id}
+    </select>
+
+
+</mapper>

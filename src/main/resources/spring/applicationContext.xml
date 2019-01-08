@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!--导入外部配置文件（引入一个properties文件的操作）  -->
+	<!--<context:property-placeholder location="classpath:/db-oracle.properties"/>-->
+
+	<!--导入外部配置文件（引入多个properties文件的操作）  -->
+	<bean id="PropertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="order" value="1" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<!--读取resources目录的db-oracle.properties文件-->
+				<!--<value>classpath:db-oracle.properties</value>-->
+				<value>classpath:db-oracle.properties</value>
+				<!--读取resources目录的httpclient.properties文件-->
+				<value>classpath:httpclient.properties</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- 数据源 -->
+	 <bean id="dataSource"  class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="maxPoolSize" value="20"></property>
+		<property name="minPoolSize" value="3"></property>
+	</bean>
+	<context:component-scan base-package="cn.zrar.hzjk.service" />
+</beans>
