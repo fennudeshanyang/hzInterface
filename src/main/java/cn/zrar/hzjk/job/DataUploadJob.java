@@ -31,7 +31,8 @@ public class DataUploadJob extends QuartzJobBean {
         timingTaskNum++;
         if(timingTaskNum>=15){
             timingTaskNum--;
-            System.out.println("数据上传定时任务同时执行个数达到了" + timingTaskNum + ",超出限额,本次不执行");
+            logger.warn("数据上传定时任务同时执行个数达到了" + timingTaskNum + ",超出限额,本次不执行");
+            //System.out.println("数据上传定时任务同时执行个数达到了" + timingTaskNum + ",超出限额,本次不执行");
             return;
         }
 
@@ -46,6 +47,7 @@ public class DataUploadJob extends QuartzJobBean {
         //获取本次定时任务所要回传的数据
         List<InterfaceLddj> lddjList = obtainDataService.findUploadData(null);
         if(lddjList.size()==0){
+            timingTaskNum--;
             logger.warn("业务库中并未获取到符合上传条件的数据");
             return;
         }
@@ -60,6 +62,7 @@ public class DataUploadJob extends QuartzJobBean {
         //将list集合转换为json字符串
         String jsonData = CommonTools.objectToJsonStr(lddjList);
         if(jsonData==null){
+            timingTaskNum--;
             logger.warn("数据上传定时任务，集合对象转换json串异常");
             return;
         }
@@ -76,6 +79,7 @@ public class DataUploadJob extends QuartzJobBean {
                 jsonResult = CommonTools.jsonStrToObject(jsonContent, JsonResult.class);
             } catch (IOException e) {
                 e.printStackTrace();
+                timingTaskNum--;
                 logger.warn("数据上传定时任务中,httpclient返回的json数据转换对象异常");
                 return;
             }
