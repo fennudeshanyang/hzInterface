@@ -241,7 +241,7 @@
         '1' as xfj_xfrs,
         '1' as xfj_sjrs,
         '杭州市信访局' as xfj_djjgmc,
-        '33010000000' as xfj_djjgdm,
+        '3301000000003455000000000000' as xfj_djjgdm,
         '03455000000000000' as xfj_djbm,
         null as xfj_djr,
         to_char(a.djrq,'yyyy-mm-dd hh24:mi:ss') as xfj_djsj,
