@@ -313,7 +313,7 @@
         '020000' as blfs_blfs,
         '杭州市信访局' as blfs_bljg,
         '3301000000003455000000000000' as blfs_bljgdm,
-        b.jsbmmc as blfs_blbm,
+        '杭州市信访局' as blfs_blbm,
         null as blfs_jbr,
         to_char(a.djrq,'yyyy-mm-dd hh24:mi:ss') as blfs_blsj,
         b.jsbmmc as blfs_qxjg,
