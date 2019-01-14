@@ -316,7 +316,7 @@
         '杭州市信访局' as blfs_blbm,
         null as blfs_jbr,
         to_char(a.djrq,'yyyy-mm-dd hh24:mi:ss') as blfs_blsj,
-        b.jsbmmc as blfs_qxjg,
+        (select sjjgmc from t_xt_jg where jg_id=b.jsbm) as blfs_qxjg,
         (select sjjgid from t_xt_jg where jg_id=b.jsbm) as blfs_qxjgdm,
         null as blfs_xqxmc,
         '无' as blfs_hfgznr,
