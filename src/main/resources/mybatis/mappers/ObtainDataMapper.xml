@@ -227,7 +227,7 @@
         null as lddj_xfjbh_new,
         'HZ330100' || a.xfjid as lddj_lhxfjid,
         (select calledno from tx_call_logo where callid=a.callid) as lddj_bhjhm,
-        '1' as lddj_issecret,
+        a.sfbm as lddj_issecret,
         a.sxfjbh as lddj_sxfjbh,
 
         <!-- xfj 51个字段 -->
@@ -310,7 +310,7 @@
         b.ywblid as blfs_blfsid,                                    <!-- 4.新的uuid  blfs表的主键-->
         '330100' as blfs_xzqh,
         null as blfs_xfjid,                                         <!-- xfj表的主键 -->
-        '020000' as blfs_blfs,
+        '010000' as blfs_blfs,
         '杭州市信访局' as blfs_bljg,
         '3301000000003455000000000000' as blfs_bljgdm,
         '杭州市信访局' as blfs_blbm,
