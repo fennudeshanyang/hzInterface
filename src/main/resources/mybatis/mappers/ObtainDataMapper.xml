@@ -278,7 +278,7 @@
         null as xfj_bfyrzzdm,
         null as xfj_bfyrzzmc,
         null as xfj_bfyrhdw,
-        '1' as xfj_blcx,
+        '2' as xfj_blcx,
         null as xfj_xfjbh_new,
         'HZ330100' || a.xfjid as xfj_lhxfjid,
         'bb4aa23667d0024e0167eeaa0a1d1287' as xfj_djrid,
@@ -332,7 +332,7 @@
             select t.* from xf_ywdj t where t.dffs='1' and t.sjjhzt &gt;=  '0' and t.sjjhzt &lt; '5' and t.scbz='0' and
             t.zwwxdh='0' and t.sxfjbh is not null  and  rownum &lt; = 100
             and exists (
-            select * from xf_ywbl where fsfs='1' and zt!='A' and zt!='3' and zt!='9' and xfjid=t.xfjid
+            select xfjid from xf_ywbl where fsfs='1' and zt!='A' and zt!='3' and zt!='9' and xfjid=t.xfjid
             )
         ) a,
         (select * from xf_ywbl  where fsfs='1' and zt!='A' and zt!='3' and zt!='9' ) b,
