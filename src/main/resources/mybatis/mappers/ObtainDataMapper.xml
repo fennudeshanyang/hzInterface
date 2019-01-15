@@ -331,6 +331,9 @@
         from (
             select t.* from xf_ywdj t where t.dffs='1' and t.sjjhzt &gt;=  '0' and t.sjjhzt &lt; '5' and t.scbz='0' and
             t.zwwxdh='0' and t.sxfjbh is not null  and  rownum &lt; = 100
+            and exists (
+            select * from xf_ywbl where fsfs='1' and zt!='A' and zt!='3' and zt!='9' and xfjid=t.xfjid
+            )
         ) a,
         (select * from xf_ywbl  where fsfs='1' and zt!='A' and zt!='3' and zt!='9' ) b,
         xf_bjxx c
