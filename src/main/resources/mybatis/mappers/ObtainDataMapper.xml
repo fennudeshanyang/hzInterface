@@ -265,7 +265,7 @@
         case a.dffs when '0' then '1' when '1' then '0' end as xfj_bjbz,
         '0' as xfj_shrdbjbz,
         '0' as xfj_lmbz,
-        '0' end as xfj_gkbz,
+        '0' as xfj_gkbz,
         '0' as xfj_zdjjbz,
         '0' as xfj_nmbz,
         '0' as xfj_yybz,
