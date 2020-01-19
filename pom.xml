@@ -34,7 +34,7 @@
     <servlet-api.version>2.5</servlet-api.version>
     <jsp-api.version>2.0</jsp-api.version>
 
-    <httpclient.version>4.3.5</httpclient.version>
+    <httpclient.version>4.3.6</httpclient.version>
   </properties>
 
   <dependencies>
