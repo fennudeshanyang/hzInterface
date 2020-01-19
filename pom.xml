@@ -7,7 +7,7 @@
   <groupId>com.zrar.ew12345</groupId>
   <artifactId>hzdatatohzzjk</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>war1</packaging>
+  <packaging>war</packaging>
 
   <name>hzdatatohzzjk Service</name>
   <!-- FIXME change it to the project's website -->
