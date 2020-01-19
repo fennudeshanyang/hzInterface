@@ -14,7 +14,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <jackson.version>2.4.2</jackson.version>
+    <jackson.version>2.9.10.1</jackson.version>
     <junit.version>4.12</junit.version>
     <spring.version>4.2.3.RELEASE</spring.version>
 
